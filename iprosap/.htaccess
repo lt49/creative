@@ -1,0 +1,11 @@
+php_value date.timezone 'America/Lima'
+
+RewriteEngine On
+
+    # Si existe el recurso o el directorio solicitado, se va a el 
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d    
+    RewriteRule ^ - [L]
+    
+    # Si el recurso no existe, usa el index.html
+    RewriteRule ^(.*)$ /iprosap/index.php?url=$1 [QSA,L]

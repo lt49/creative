@@ -1,0 +1,28 @@
+MANTENIMIENTO
+- agregar productos y su precio
+- gestionar roles del sistema
+- gestionar accesos al sistema de los roles
+
+DATOS PERSONA
+- Gestionar Clientes (CRUD)
+- Gestionar Empleados (CRUD)
+- Gestionar Usuarios con sus roles
+
+PUNTO DE VENTA
+- Otorgar credito (paga creditos, pagos diarios)
+- pagar credito deuda
+- pagar pago diario
+- Gestionar prorroga
+
+REPORTES
+- quiero ver a todos los empleados
+- quiero ver a todos los clientes
+- quiero ver los clientes deudores
+- quiero ver los clientes buenos pagadores
+- quiero ver los creditos otorgados
+- quiero ver los creditos vencidos
+- quiero ver las prorrogas de credito
+- quiero ver los pagos diarios (Montos con subtotal y total)
+
+GRAFICOS ESTADISTICOS
+- Grafico de ingresos
