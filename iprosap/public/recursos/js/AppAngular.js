@@ -10,6 +10,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         //templateUrl: "public/view/main/homeContentEx.php",
         controller: "Dashboard"
     })
+//:::::::::::::::::::: CLIENTES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    .state("clientes",{
+        url: "/clientes",
+        templateUrl: "public/view/mantenimiento/cg_clientes.php",
+        controller: "CGClientes"
+    })
 //:::::::::::::::::::: REPORTES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     .state("rep_creditos",{
         url: "/rep_creditos",

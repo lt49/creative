@@ -125,7 +125,7 @@ app.factory("ajax", function($http, $q, $log, $state){
     ajax.validaConfirm = function(clave, op, id, tipo){
         ajax.objlist.getList("validarUserConfirm", ajax.urlfind, "", "", "", "", "", "", "",clave,"")
         .then(function(data){
-            $log.log(data.data.estado);
+            //$log.log(data.data.estado);
             if(data.data.estado){
                 //swal("Correcto!", "Tu clave es: " + clave, "success");
                 ajax.pagar(op, id, tipo);

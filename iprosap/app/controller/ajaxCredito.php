@@ -3,7 +3,7 @@ require_once __DIR__."/../model/dao/CreditoDao.php";
 
 $json = file_get_contents("php://input");
 $obj = json_decode($json);
-//var_dump($obj->obj->fechaIni);
+var_dump($obj->obj->fechaIni);
 //echo $obj->obj->fechaIni;
 
 $operation = $obj->op;
@@ -27,12 +27,12 @@ switch($operation){
         $datos = iterar($result);
         break;
 
-    case "findCliente":
+    /*case "findCliente":
         $datos = null;
         $dao = new CreditoDao();
         $result = $dao->findClienteCredito($obj);
         $datos = iterar($result);
-        break;
+        break;*/
 
     case "findPagoHoy":
         $datos = null;

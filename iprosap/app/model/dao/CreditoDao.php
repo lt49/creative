@@ -36,18 +36,18 @@ class CreditoDao {
         return $result;
     }
 
-    public function findClienteCredito($obj){
+    /*public function findClienteCredito($obj){
         $this->cn = (new Conecta)->getInstance();
 
         settype($obj->doc, "string");
         $documento = strlen($obj->doc)<8 ? "placa = '$obj->doc'" : "dni = '$obj->doc'";
 
         $sql = "SELECT * FROM persona where ".$documento;
-        //echo $sql;
+        echo $sql;
         $result = $this->cn->query($sql) or die("Error findClienteCredito: ");
         $this->cn->close();
         return $result;
-    }
+    }*/
 
     public function findPagoHoy($obj){
         $this->cn = (new Conecta)->getInstance();
@@ -70,7 +70,7 @@ class CreditoDao {
         $fecha_hoy = date('Y-m-d');
         $documento = strlen($obj->doc)<8 ? "placa = '$obj->doc'" : "dni = '$obj->doc'";
 
-        $sql = "SELECT * FROM vw_credito_grifo where ".$documento." and fecha_cred_ini = '$fecha_hoy'";
+        $sql = "SELECT * FROM vw_creditos where ".$documento." and fecha_ini = '$fecha_hoy'";
         //echo $sql;
         $result = $this->cn->query($sql) or die("Error findCreditoHoy: ");
         $this->cn->close();

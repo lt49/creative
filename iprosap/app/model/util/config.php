@@ -1,10 +1,10 @@
 <?php
-    /*define("HOST", "localhost");
+   /* define("HOST", "localhost");
     define("USER", "root");
     define("PASS", "admin");
-    define("DB", "integradb");*/
+    define("DB", "integradb");
 
-
+*/
 /*Datos Hostinguer !!!*/
 
     define("HOST", "mysql.hostinger.es");

@@ -76,6 +76,7 @@
   <script charset="utf-8" src="public/recursos/js/AppFactory.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/AppAcceso.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/AppDashboard.js" type="application/javascript"></script>
+  <script charset="utf-8" src="public/recursos/js/mantenimiento/CGClientes.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/mantenimiento/usuario/MGusuario.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/mantenimiento/roles/MGroles.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/mantenimiento/producto/MGproducto.js" type="application/javascript"></script>

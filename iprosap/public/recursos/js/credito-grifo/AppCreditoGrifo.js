@@ -33,7 +33,7 @@ app.controller("Credito-grifo", function($scope, $log, $filter, $timeout, $http,
                     ajax.Verf_deudaCreditoGrifo("findCreditoGrifo");                    
                 }else{
                     ajax.estadoCGHoy = false;
-                    msjErrorB(e1_head, e12_body, 5000);
+                    msjErrorB(e1_head, e12_body, 2500);
                     $state.go("credito-grifo");
                     //alert("No es miembro de IPROSAP");
                 }

@@ -140,6 +140,10 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
                 $url = $_GET["url"];
                 redirectController($url, $token);
                 break;
+            case "clientes":
+                require_once "app/core/UrlHelperAjax.php";
+                break;
+            case "roles":
             case "usuario":
                 require_once "app/core/UrlHelperAjax.php";
                 break;
