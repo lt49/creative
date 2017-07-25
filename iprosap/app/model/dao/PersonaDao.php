@@ -16,9 +16,9 @@ class PersonaDao {
         
         $idsucursal = $_SESSION["idsucursal"];
 
-        $sql = "SELECT * FROM integradb.persona where tipo = 'C' order by apellidopat";
-        //echo $sql;
-        $result = $this->cn->query($sql) or die("Error lstClientes: ");
+        $sql = "SELECT * FROM persona where tipo = 'C' order by apellidopat and idsucursal = $idsucursal";
+        echo $sql;
+        $result = $this->cn->query($sql) or die("Error lstClientes: ".$this->cn->query($sql));
         $this->cn->close();
         return $result;
     }
