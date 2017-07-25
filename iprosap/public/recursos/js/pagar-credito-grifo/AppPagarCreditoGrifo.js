@@ -53,7 +53,7 @@ app.controller("PagarCredito-grifo", function($scope, $log, $filter, $timeout, $
                     ajax.estadoCGDeuda = true;
                     $log.log("DATA CLIENTE");
                     $log.log(data.data[0].idpersona);
-                    $scope.findCreditosDeudas();
+                    $scope.findCreditosDeudas(data.data[0].idpersona);
                     
                     //$state.go("pagar-credito-grifo.deuda");
                 }else{
@@ -69,8 +69,8 @@ app.controller("PagarCredito-grifo", function($scope, $log, $filter, $timeout, $
 
         $scope.findCliente();
 
-        $scope.findCreditosDeudas = function(){
-            ajax.objlist.getList("findCreditosDeudas","app/controller/ajaxCredito.php","", 4, "","","","","","","")
+        $scope.findCreditosDeudas = function(idpersona){
+            ajax.objlist.getList("findCreditosDeudas","app/controller/ajaxCredito.php","", idpersona, "","","","","","","")
             .then(function(data){
                 //alert("Productos buscando");
                 $log.log("ajax Se encontro deudas de credito");
