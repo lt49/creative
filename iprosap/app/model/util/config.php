@@ -1,8 +1,8 @@
 <?php
-    /*define("HOST", "localhost");
-    define("USER", "root");
-    define("PASS", "admin");
-    define("DB", "integradb");*/
+    // define("HOST", "localhost");
+    // define("USER", "root");
+    // define("PASS", "admin");
+    // define("DB", "integradb");
 
 
 /*Datos Hostinguer !!!*/
