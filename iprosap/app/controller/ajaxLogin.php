@@ -95,7 +95,7 @@ if($dao->validarUserLocal($user, $clave)){
 
 
 
-        $mensaje = array("msj"=>"valido", "usuario"=>$user);
+        $mensaje = array("msj"=>"valido", "usuario"=>$user, "rol"=>$rol);
         echo json_encode($mensaje);
     }
 }

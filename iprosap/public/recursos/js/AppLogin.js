@@ -21,9 +21,20 @@ app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
         }
     }
 
-    $scope.redireccionar = function () {
+    $scope.redireccionar = function (rol) {
         var form = document.getElementById("frmlogin");
+        var state = "dashboard";
+        switch(rol){
+            case "ADMIN":
+                state = "dashboard";
+                break;
+            case "PLAYA":
+                state = "credito";
+                break;
+        }
+        document.getElementById("frmlogin").action = state;
         form.submit();
+        
     }
     
     $scope.makeSerie = function(){
@@ -56,12 +67,12 @@ app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
                 });*/
 
         .then(function (res) {
-            //$log.log(res.data.msj);
+            $log.log(res.data);
             //alert("Angular entro al Callback");
             if (res.data.msj == "valido") {
                 //alert("OK! Usuario Correcto");
                 $cookies.put('UsuarioSess', $scope.makeSerie());
-                $scope.redireccionar();
+                $scope.redireccionar(res.data.rol);
             } else {
                 //$log.log(res);
                 //alert("NO: "+res.data.msj);

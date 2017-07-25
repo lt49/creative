@@ -47,8 +47,15 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Ingrese sus credenciales para iniciar sesión</p>
-
-    <form id="frmlogin" ng-keypress="enviarFrmA($event)" method="POST" action="dashboard">
+<?php 
+    /*if($_SESSION["rol"]=="ADMIN"){
+        $state = "dashboard";
+    }
+    if($_SESSION["rol"]=="PLAYA"){
+        $state = "credito";
+    }*/
+?>
+    <form id="frmlogin" ng-keypress="enviarFrmA($event)" method="POST" action="credito">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Usuario" ng-model="data.usuario" required="" autofocus>
         <input type="hidden" class="form-control" value="<?=$token?>" name="token"/>
