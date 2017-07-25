@@ -34,8 +34,8 @@ class PersonaDao {
         }
          
         $idsucursal = $_SESSION['idsucursal'];
-        $sql = "INSERT INTO persona (`idsucursal`, `nombres`, `apellidopat`, `apellidomat`, `fecha_nac`, `genero`, `dni`, `placa`, `celular`, `email`, `distrito`, `importe_max`, `galones_max`, `tipo`, `estado`, `iduser`) ".
-            "VALUES ($idsucursal, '$obj->nombres', '$obj->apaterno', '$obj->amaterno', '$obj->fechanac', '$obj->genero', '$obj->dni', '$obj->placa', '$obj->celular', '$obj->email', '$obj->distrito', $obj->montomx, $galonesmx, 'C', '1', 1);";
+        $sql = "INSERT INTO persona (`idsucursal`, foto, `nombres`, `apellidopat`, `apellidomat`, `fecha_nac`, `genero`, `dni`, `placa`, `celular`, `email`, `distrito`, `importe_max`, `galones_max`, `tipo`, `estado`, `iduser`) ".
+            "VALUES ($idsucursal,'00000000.JPG', '$obj->nombres', '$obj->apaterno', '$obj->amaterno', '$obj->fechanac', '$obj->genero', '$obj->dni', '$obj->placa', '$obj->celular', '$obj->email', '$obj->distrito', $obj->montomx, $galonesmx, 'C', '1', 1);";
         //echo $sql;
         if(!$this->cn->query($sql)){
             $flag = 0;
