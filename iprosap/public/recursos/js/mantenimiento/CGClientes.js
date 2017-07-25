@@ -23,14 +23,13 @@ app.controller("CGClientes", function($scope, $log, $filter, $timeout, $http, $q
   $scope.save = function(){
       ajax.objlist.getList("addClientes", "app/controller/ajaxPersona.php", "", "", "", "", "", "", "", "", $scope.frm)
         .then(function(res){
-          $scope.dataPersona = res.data;
-          $log.log("**** LOG ajaxPersona ****");
+          $log.log("**** LOG ADD ajaxPersona ****");
           $log.log(res);
           $scope.lsPersonal();
           $scope.frm = {};
         })
         .catch(function(error){
-            $log.log("**** LOG ERROR ajaxPersona ****");
+            $log.log("**** LOG ERROR ADD ajaxPersona ****");
             $log.log(error);
         });
       
