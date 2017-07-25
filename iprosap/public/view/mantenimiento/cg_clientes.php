@@ -75,7 +75,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr ng-repeat="per in dataPersona">
+                              <tr ng-repeat="per in dataPersona track by $index">
                                 <td>{{$index+1}}</td>
                                 <td>{{per.nombres+" "+per.apellidopat+" "+per.apellidomat}}</td>
                                 <td>{{per.dni}}</td>
