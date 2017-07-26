@@ -92,7 +92,7 @@
   <script charset="utf-8" src="public/recursos/js/pagar-credito-grifo/AppCGDeudaPagar.js" type="application/javascript"></script>
 
 </head>
-<body class="hold-transition skin-black-light sidebar-mini">
+<body class="hold-transition skin-black-light sidebar-mini sidebar-collapse">
     <div class="wrapper">
 
       <!--header app-->

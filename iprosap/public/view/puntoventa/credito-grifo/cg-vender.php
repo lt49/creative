@@ -31,7 +31,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <i class="fa fa-trash-o"></i> Borrar
                               </a>
                           </span>     -->
-              <div class="col-xs-12 col-sm-9">
+              <div class="col-xs-12 col-sm-8">
                 <div class="info-box" >
                   <span class="info-box-icon bg-{{color}}"><i class="fa fa-free-code-camp"></i></span>
                   <div class="info-box-content">
@@ -41,7 +41,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 </div>
               </div>
 
-              <div class="col-xs-12 col-sm-3">
+              <div class="col-xs-12 col-sm-4">
                     <div class="panel panel-default">
                       <div class="panel-body">
                         <p style="font-size: 30px;" >S/ {{monto}}</p>

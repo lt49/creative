@@ -1,7 +1,7 @@
 app.controller("CGDeudaPagar", function($scope, $log, $filter, $timeout, $http, $q, $state, $rootScope, ajax, $sce, $stateParams){
 
-    if(!ajax.estadoCGDeuda){
-        $state.go("credito-grifo");
+    if(!ajax.estadoCGDeudaPagar){
+        $state.go("pagar-credito-grifo");        
     }else{
 
         //msjErrorB(e1_head, e13_body, 2000);

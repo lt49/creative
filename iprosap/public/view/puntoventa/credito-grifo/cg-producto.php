@@ -71,6 +71,11 @@
               </div> -->
 
           </div>
+          <div class="col-md-12">                    
+                <div class="col-md-6 col-md-offset-3">
+                    <button class="btn btn-default col-xs-12 col-md-6 col-md-offset-3" ui-sref="credito-grifo">Cancelar</button>
+                </div>                
+            </div>
       </div>
     </div>
 </div>

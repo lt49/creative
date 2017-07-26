@@ -1,9 +1,8 @@
 app.controller("CGDeuda", function($scope, $log, $filter, $timeout, $http, $q, $state, $rootScope, ajax, $sce, $stateParams){
 
     if(!ajax.estadoCGDeuda){
-        $state.go("credito-grifo");
+        $state.go("credito-grifo"); 
     }else{
-
             /*swal({
               title: "An input!",
               text: "Write something interesting:",

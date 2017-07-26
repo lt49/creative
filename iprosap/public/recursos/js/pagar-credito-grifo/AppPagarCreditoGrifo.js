@@ -58,8 +58,8 @@ app.controller("PagarCredito-grifo", function($scope, $log, $filter, $timeout, $
                     //$state.go("pagar-credito-grifo.deuda");
                 }else{
                     ajax.estadoCGHoy = false;
-                    msjErrorB(e1_head, e12_body, 5000);
-                    $state.go("credito-grifo");
+                    msjErrorB(e1_head, e12_body, 2000);
+                    $state.go("pagar-credito-grifo");
                 }
             })
             .catch(function(error){
@@ -78,6 +78,7 @@ app.controller("PagarCredito-grifo", function($scope, $log, $filter, $timeout, $
                 if(data.data.length == 0){                   
                     alert("No tiene Deuda!");
                 }else{
+                    ajax.estadoCGDeudaPagar = true;
                     $state.go("pagar-credito-grifo.deuda");
                 }                
             })

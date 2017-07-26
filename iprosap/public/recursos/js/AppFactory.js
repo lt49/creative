@@ -36,6 +36,7 @@ app.factory("ajax", function($http, $q, $log, $state){
     ajax.estadoCGProducto = false;
     ajax.estadoCGDeuda = false;
     ajax.estadoCGPagoDiario = false;
+    ajax.estadoCGDeudaPagar = false;
 
 
     //ajax.docEstado = false;

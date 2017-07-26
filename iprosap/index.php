@@ -151,6 +151,8 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
                 require_once "app/core/UrlHelperAjax.php";
                 break;
             case "roles":
+                require_once "app/core/UrlHelperAjax.php";
+                break;
             case "usuario":
                 require_once "app/core/UrlHelperAjax.php";
                 break;
@@ -167,6 +169,9 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
                 require_once "app/core/UrlHelperAjax.php";
                 break;
             case "pagarcredito":
+                require_once "app/core/UrlHelperAjax.php";
+                break;
+            case "pagarcredito/deuda":
                 require_once "app/core/UrlHelperAjax.php";
                 break;
             case "credito/vender":

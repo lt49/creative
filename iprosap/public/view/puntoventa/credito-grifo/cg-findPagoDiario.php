@@ -20,8 +20,14 @@ if (session_status() == PHP_SESSION_NONE) {
             <hr/>
             <hr/>
             <hr/>
-            <div class="col-md-6 col-md-offset-3">
+            <!--<div class="col-md-6 col-md-offset-3">
                 <button class="btn btn-success col-xs-12" ng-click="pagarDiario()">Pagar</button>
+            </div>-->
+            <div class="col-md-12">                    
+                <div class="col-md-8 col-md-offset-2">
+                    <button class="btn btn-default col-xs-12 col-md-5" ui-sref="credito-grifo">Cancelar</button>  
+                    <button class="btn btn-success col-xs-12 col-md-5 col-md-offset-1" ng-click="pagarDiario()">Pagar</button>
+                </div>                
             </div>
 
       </div>

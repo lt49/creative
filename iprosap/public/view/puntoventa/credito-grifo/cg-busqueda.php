@@ -16,7 +16,7 @@
     <section class="content" style="height: 1700px;">
         <div class="row">
 
-           <div class="col-xs-12 col-md-6 col-lg-4">
+           <div class="col-xs-12 col-md-5 col-lg-4">
               <div class="col-xs-12">
                   <div class="box box-success">
                       <div class="box-body box-profile">
@@ -45,7 +45,7 @@
 
 
             <!-- col-xs-push-12 -->
-           <div class="col-xs-12 col-xs-offset-0 col-md-6 col-lg-8 col-lg-push-0 visible-md visible-lg">
+           <div class="col-xs-12 col-xs-offset-0 col-md-7 col-lg-8 col-lg-push-0 visible-md visible-lg">
               <div class="col-xs-12">
                   <div class="box box-success">
                       <div class="box-body box-profile">
@@ -101,7 +101,7 @@
 
 
         <div class="row">
-             <div class="col-md-6 col-lg-4" ui-view="creditoIP">
+             <div class="col-md-5 col-lg-4" ui-view="creditoIP">
 
                   <div class="col-xs-12">
                     <div class="panel panel-default">
@@ -125,7 +125,7 @@
                            </div> -->
 
 
-              <div class="col-md-6 col-lg-8" ui-view="creditoIPdetail">
+              <div class="col-md-7 col-lg-8" ui-view="creditoIPdetail">
 
                 <div class="col-xs-12">
                     <div class="panel panel-default">
