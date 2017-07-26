@@ -3,6 +3,7 @@
     <section class="content-header">
       <h1>
         <span class="fa fa-money"></span> Pagar Crédito
+        
         <small>Punto de Venta</small>
       </h1>
       <ol class="breadcrumb">
