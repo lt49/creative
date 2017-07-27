@@ -19,7 +19,7 @@ app.controller("CGVender", function($scope, $log, $filter, $timeout, $http, $q, 
 
                     if(data.data.estado){
                         //alert("Se guardo el credito :)");
-                        msjOk(ok1_head, ok5_body, 3000);
+                        msjOk(ok1_head, ok5_body, 2000);
                         //reseteamos las rutas para no mostrarlas
                         ajax.estadoCredito = false;
                         ajax.estadoCGCliente = false;
@@ -31,7 +31,7 @@ app.controller("CGVender", function($scope, $log, $filter, $timeout, $http, $q, 
 
                     }else{
                         //alert("No se pudo guardar el credito :(");
-                        msjError(e1_head, e2_body, 3000);
+                        msjError(e1_head, e2_body, 2000);
                     }
                 })
                 .catch(function(error){

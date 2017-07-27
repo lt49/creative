@@ -95,7 +95,18 @@ switch($operation){
         $result = $dao->lstCreditosCrifo($obj);
         $datos = iterar_all($result);
         break;
-
+    case "lstCreditosSinDespachar":
+        $datos = null;
+        $dao = new CreditoDao();
+        $result = $dao->lstCreditosSinDespachar();
+        $datos = iterar_all($result);
+        break;
+    case "updtCreditoSinDespachar":
+        //var_dump($obj);
+        $datos = null;
+        $dao = new CreditoDao();
+        $datos = array("estado"=>$dao->updtCreditoSinDespachar($obj));
+        break;
 }
 
 function iterar($result){

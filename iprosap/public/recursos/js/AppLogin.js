@@ -29,6 +29,9 @@ app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
                 state = "dashboard";
                 break;
             case "PLAYA":
+                state = "despachopos";
+                break;
+            case "CREDITO":
                 state = "credito";
                 break;
         }
@@ -39,7 +42,7 @@ app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
     
     $scope.makeSerie = function(){
             $scope.text = "";
-            $scope.possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            $scope.possible = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789";
 
             for( var i=0; i < 10; i++ )
                 $scope.text += $scope.possible.charAt(Math.floor(Math.random() * $scope.possible.length));

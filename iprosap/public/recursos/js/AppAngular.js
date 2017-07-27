@@ -124,9 +124,20 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         //templateUrl: "public/view/puntoventa/credito-grifo/cg-findPagoDiario.php"
         /*,
         controller: "CGPagoDiario"*/
+    })
+//:::::: POS ::::::::::::::::::::::::::::::::::::
+    .state("cg_despachopos",{
+        url: "/despachopos",
+        templateUrl: "public/view/puntoventa/despacho/cg_despachopos.php",
+        controller: "cg_despachopos"
+    })
+    .state("cg_despacho",{
+        url: "/despacho",
+        templateUrl: "public/view/puntoventa/despacho/cg_despacho.php",
+        controller: "cg_despacho"
     });
-
-
+    
+//:::::: FIN POS ::::::::::::::::::::::::::::::::::::
     $urlRouterProvider.otherwise("dashboard");
 
 });

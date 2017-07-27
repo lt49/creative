@@ -27,8 +27,33 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
   <link rel="stylesheet" href="public/recursos/plugins/core/plugins/iCheck/square/blue.css">
   <!--Material icons-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-
+      rel="stylesheet">  
+  <script type="text/javascript">
+        function toggleFullScreen2(elem) {
+    // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+        if (elem.requestFullScreen) {
+            elem.requestFullScreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullScreen) {
+            elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
+</script> 
   <!--js-->
   <script charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" type="application/javascript"></script>
   <script src="public/recursos/plugins/angularjs/angular-cookies.min.js"></script>
@@ -39,7 +64,41 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
 
 
 </head>
-<body class="hold-transition login-page" ng-controller="ctr-login">
+<body id="full" class="hold-transition login-page" ng-controller="ctr-login">
+<br>
+<!--<button class="btn btn-info" onclick="viewPage()">Full Screen</button>
+<input type="button" value="fullscreen2" onclick="toggleFullScreen2(document.body)">-->
+<script type="text/javascript">
+    
+    function viewPage() {
+        var el = document.body;
+        toggleFullScreen(el);
+    }
+    
+    function toggleFullScreen(el){
+        if(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement){
+           if(document.exitFullscreen){
+              document.exitFullscreen();
+            }else if(document.mozCancelFullScreen){
+                document.mozCancelFullScreen();
+            }else if(document.webkitExitFullscreen){
+                document.webkitExitFullscreen();
+            }else if(document.msExitFullscreen){
+                document.msExitFullscreen();
+            }
+        }else{
+           if(document.documentElement.requestFullscreen){
+              el.requestFullscreen();
+            }else if(document.documentElement.mozRequestFullScreen){
+              el.mozRequestFullScreen();
+            }else if(document.documentElement.webkitRequestFullscreen){
+              el.webkitRequestFullscreen();
+            }else if(document.documentElement.msRequestFullscreen){
+              el.msRequestFullscreen();
+            }
+        }
+    }
+</script>
 <div class="login-box">
   <div class="login-logo">
     <a href="./inicio"><b>IPROSAP</b> - Tarapoto <i class="material-icons">android</i></a>
@@ -47,14 +106,6 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Ingrese sus credenciales para iniciar sesión</p>
-<?php 
-    /*if($_SESSION["rol"]=="ADMIN"){
-        $state = "dashboard";
-    }
-    if($_SESSION["rol"]=="PLAYA"){
-        $state = "credito";
-    }*/
-?>
     <form id="frmlogin" ng-keypress="enviarFrmA($event)" method="POST" action="credito">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Usuario" ng-model="data.usuario" required="" autofocus>
@@ -100,6 +151,7 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
     });
   });
 </script>
+
 </body>
 </html>
 <?php
@@ -148,6 +200,12 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
                 redirectController($url, $token);
                 break;
             case "clientes":
+                require_once "app/core/UrlHelperAjax.php";
+                break;
+            case "despachopos":
+                require_once "app/core/UrlHelperAjax.php";
+                break;
+            case "despacho":
                 require_once "app/core/UrlHelperAjax.php";
                 break;
             case "roles":

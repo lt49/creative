@@ -16,7 +16,11 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-
+          <!--<li>
+              <button class="btn btn-default btn-sm" onclick="viewPage()">
+                  <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+              </button>      
+          </li>-->
 
 
 

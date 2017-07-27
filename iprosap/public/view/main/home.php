@@ -67,7 +67,7 @@
   <script src="public/recursos/plugins/AngularMask/ngMask.js" type="application/javascript"></script>
 
 
-
+  
 
 
 
@@ -86,6 +86,8 @@
   <script charset="utf-8" src="public/recursos/js/credito-grifo/despachar-producto/AppCGProducto.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/credito-grifo/despachar-producto/AppCGVender.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/credito-grifo/pago-deuda/AppCGDeuda.js" type="application/javascript"></script>
+  <script charset="utf-8" src="public/recursos/js/credito-grifo/despacho/cg_despachopos.js" type="application/javascript"></script>
+  <script charset="utf-8" src="public/recursos/js/credito-grifo/despacho/cg_despacho.js" type="application/javascript"></script>
   <script charset="utf-8" src="public/recursos/js/reportes/creditos/RGcreditos.js" type="application/javascript"></script>
 
   <script charset="utf-8" src="public/recursos/js/pagar-credito-grifo/AppPagarCreditoGrifo.js" type="application/javascript"></script>
@@ -94,7 +96,6 @@
 </head>
 <body class="hold-transition skin-black-light sidebar-mini sidebar-collapse">
     <div class="wrapper">
-
       <!--header app-->
 
       <?php include_once "homeHeader.php"; ?>
@@ -218,7 +219,37 @@
 <!-- AdminLTE for demo purposes -->
 <script src="public/recursos/plugins/core/dist/js/demo.js"></script>
 
-
+<script type="text/javascript">
+    
+    function viewPage() {
+        var el = document.body;
+        toggleFullScreen(el);
+    }
+    
+    function toggleFullScreen(el){
+        if(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement){
+           if(document.exitFullscreen){
+              document.exitFullscreen();
+            }else if(document.mozCancelFullScreen){
+                document.mozCancelFullScreen();
+            }else if(document.webkitExitFullscreen){
+                document.webkitExitFullscreen();
+            }else if(document.msExitFullscreen){
+                document.msExitFullscreen();
+            }
+        }else{
+           if(document.documentElement.requestFullscreen){
+              el.requestFullscreen();
+            }else if(document.documentElement.mozRequestFullScreen){
+              el.mozRequestFullScreen();
+            }else if(document.documentElement.webkitRequestFullscreen){
+              el.webkitRequestFullscreen();
+            }else if(document.documentElement.msRequestFullscreen){
+              el.msRequestFullscreen();
+            }
+        }
+    }
+</script>
 <!-- material design
 <script src="public/recursos/plugins/MaterialDesign/js/material.js" type="application/javascript"></script>
 <script src="public/recursos/plugins/MaterialDesign/js/ripples.js" type="application/javascript"></script>

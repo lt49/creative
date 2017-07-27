@@ -118,36 +118,131 @@ class CreditoDao {
 
     public function findNumberMaxCredito(){
         $this->cn = (new Conecta)->getInstance();
-
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $sql = "SELECT num_credito FROM sucursal where estado = 1 and idsucursal = ".$_SESSION["idsucursal"];
+        $sql = "SELECT correlativo, num_credito FROM sucursal where estado = 1 and idsucursal = ".$_SESSION["idsucursal"];
         //echo $sql;
         $result = $this->cn->query($sql) or die("Error findNumberMaxCredito: ");
         $this->cn->close();
         $row = mysqli_fetch_assoc($result);
-        return $row["num_credito"];
+        
+        //return $row["num_credito"]+1;
+        return $row;
     }
 
-    public function CreateNumSerie($num){
-        $longNumero = strlen($num);
-        $longEstandar = 6;
-        $iterMax = $longEstandar - $longNumero;
-        $serie = "";
-        for($i=0;$i<$iterMax;$i++){
-            $serie =$serie."0";
-        }
-        return $serie.$num;
-    }
-
-    public function addCredito($obj){
-        $num_credito = $this->findNumberMaxCredito()+1;
+    public function CreateNumSerie(){    
         $this->cn = (new Conecta)->getInstance();
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $serie = $this->CreateNumSerie($num_credito);
+        $num = $this->findNumberMaxCredito()["num_credito"];
+        $correlativo = $this->findNumberMaxCredito()["correlativo"];
+        $letras = array(
+            'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AÑ','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ',
+            'BA','BB','BC','BD','BE','BF','BG','BH','BI','BJ','BK','BL','BM','BN','BÑ','BO','BP','BQ','BR','BS','BT','BU','BV','BW','BX','BY','BZ',
+            'CA','CB','CC','CD','CE','CF','CG','CH','CI','CJ','CK','CL','CM','CN','CÑ','CO','CP','CQ','CR','CS','CT','CU','CV','CW','CX','CY','CZ',
+            'DA','DB','DC','DD','DE','DF','DG','DH','DI','DJ','DK','DL','DM','DN','DÑ','DO','DP','DQ','DR','DS','DT','DU','DV','DW','DX','DY','DZ',
+            'EA','EB','EC','ED','EE','EF','EG','EH','EI','EJ','EK','EL','EM','EN','EÑ','EO','EP','EQ','ER','ES','ET','EU','EV','EW','EX','EY','EZ',
+            'FA','FB','FC','FD','FE','FF','FG','FH','FI','FJ','FK','FL','FM','FN','FÑ','FO','FP','FQ','FR','FS','FT','FU','FV','FW','FX','FY','FZ',
+            'GA','GB','GC','GD','GE','GF','GG','GH','GI','GJ','GK','GL','GM','GN','GÑ','GO','GP','GQ','GR','GS','GT','GU','GV','GW','GX','GY','GZ',
+            'HA','HB','HC','HD','HE','HF','HG','HH','HI','HJ','HK','HL','HM','HN','HÑ','HO','HP','HQ','HR','HS','HT','HU','HV','HW','HX','HY','HZ',
+            'IA','IB','IC','ID','IE','IF','IG','IH','II','IJ','IK','IL','IM','IN','IÑ','IO','IP','IQ','IR','IS','IT','IU','IV','IW','IX','IY','IZ',
+            'JA','JB','JC','JD','JE','JF','JG','JH','JI','JJ','JK','JL','JM','JN','JÑ','JO','JP','JQ','JR','JS','JT','JU','JV','JW','JX','JY','JZ',
+            'KA','KB','KC','KD','KE','KF','KG','KH','KI','KJ','KK','KL','KM','KN','KÑ','KO','KP','KQ','KR','KS','KT','KU','KV','KW','KX','KY','KZ',
+            'LA','LB','LC','LD','LE','LF','LG','LH','LI','LJ','LK','LL','LM','LN','LÑ','LO','LP','LQ','LR','LS','LT','LU','LV','LW','LX','LY','LZ',
+            'MA','MB','MC','MD','ME','MF','MG','MH','MI','MJ','MK','ML','MM','MN','MÑ','MO','MP','MQ','MR','MS','MT','MU','MV','MW','MX','MY','MZ',
+            'NA','NB','NC','ND','NE','NF','NG','NH','NI','NJ','NK','NL','NM','NN','NÑ','NO','NP','NQ','NR','NS','NT','NU','NV','NW','NX','NY','NZ',
+            'ÑA','ÑB','ÑC','ÑD','ÑE','ÑF','ÑG','ÑH','ÑI','ÑJ','ÑK','ÑL','ÑM','ÑN','ÑÑ','ÑO','ÑP','ÑQ','ÑR','ÑS','ÑT','ÑU','ÑV','ÑW','ÑX','ÑY','ÑZ',
+            'OA','OB','OC','OD','OE','OF','OG','OH','OI','OJ','OK','OL','OM','ON','OÑ','OO','OP','OQ','OR','OS','OT','OU','OV','OW','OX','OY','OZ',
+            'PA','PB','PC','PD','PE','PF','PG','PH','PI','PJ','PK','PL','PM','PN','PÑ','PO','PP','PQ','PR','PS','PT','PU','PV','PW','PX','PY','PZ',
+            'QA','QB','QC','QD','QE','QF','QG','QH','QI','QJ','QK','QL','QM','QN','QÑ','QO','QP','QQ','QR','QS','QT','QU','QV','QW','QX','QY','QZ',
+            'RA','RB','RC','RD','RE','RF','RG','RH','RI','RJ','RK','RL','RM','RN','RÑ','RO','RP','RQ','RR','RS','RT','RU','RV','RW','RX','RY','RZ',
+            'SA','SB','SC','SD','SE','SF','SG','SH','SI','SJ','SK','SL','SM','SN','SÑ','SO','SP','SQ','SR','SS','ST','SU','SV','SW','SX','SY','SZ',
+            'TA','TB','TC','TD','TE','TF','TG','TH','TI','TJ','TK','TL','TM','TN','TÑ','TO','TP','TQ','TR','TS','TT','TU','TV','TW','TX','TY','TZ',
+            'UA','UB','UC','UD','UE','UF','UG','UH','UI','UJ','UK','UL','UM','UN','UÑ','UO','UP','UQ','UR','US','UT','UU','UV','UW','UX','UY','UZ',
+            'VA','VB','VC','VD','VE','VF','VG','VH','VI','VJ','VK','VL','VM','VN','VÑ','VO','VP','VQ','VR','VS','VT','VU','VV','VW','VX','VY','VZ',
+            'WA','WB','WC','WD','WE','WF','WG','WH','WI','WJ','WK','WL','WM','WN','WÑ','WO','WP','WQ','WR','WS','WT','WU','WV','WW','WX','WY','WZ',
+            'XA','XB','XC','XD','XE','XF','XG','XH','XI','XJ','XK','XL','XM','XN','XÑ','XO','XP','XQ','XR','XS','XT','XU','XV','XW','XX','XY','XZ',
+            'YA','YB','YC','YD','YE','YF','YG','YH','YI','YJ','YK','YL','YM','YN','YÑ','YO','YP','YQ','YR','YS','YT','YU','YV','YW','YX','YY','YZ',
+            'ZA','ZB','ZC','ZD','ZE','ZF','ZG','ZH','ZI','ZJ','ZK','ZL','ZM','ZN','ZÑ','ZO','ZP','ZQ','ZR','ZS','ZT','ZU','ZV','ZW','ZX','ZY','ZZ'
+        );   
+        
+        $base = "";
+        $logMaximo = 2;
+        if($num>=$logMaximo){
+            try{
+                //update al correlativo (actual+1)
+                $this->updtCorrelativo(($correlativo+1));
+                //update num_credito = 0, para empezar el num_credito es en 0.
+                $this->resetNumCredito(1);            
+                $base = (string)$letras[$correlativo+1]."0".$_SESSION["idsucursal"];            
+                $num = 1;                
+                
+            }catch(Exception $e){
+                print "Error al generar |Numero de Serie|: ".$e->getMessage();
+            }
+        }else{            
+             try{
+                $base = $letras[$correlativo];
+                $this->resetNumCredito($num+1);    
+                $num+=1;
+              }catch(Exception $e){
+                print "Error al generar |Numero de Serie|: ".$e->getMessage();
+              }
+        }
+        
+        $longNumero = strlen($num);
+        $longEstandar = 6;
+        $iterMax = $longEstandar - $longNumero;
+        $cuerpo = "";
+        for($i=0;$i<$iterMax;$i++){
+            $cuerpo =$cuerpo."0";
+        }
+        $serie = $base."-".$cuerpo.$num; 
+        return $serie;
+    }
+    
+    public function updtCorrelativo($num){
+        $this->cn = (new Conecta)->getInstance();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $sql = "update sucursal SET correlativo = $num where idsucursal= ".$_SESSION["idsucursal"];
+        //echo $sql;
+        if(!$this->cn->query($sql)){
+            $flag = 0;
+            print 'Error updtCorrelativo: '.$this->cn->query($sql);
+        }else{
+            $flag = 1;
+        }
+        return $flag;
+    }
+    
+    public function resetNumCredito($num){
+        $this->cn = (new Conecta)->getInstance();
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $sql = "update sucursal SET num_credito = $num where idsucursal=".$_SESSION["idsucursal"];
+        //echo $sql;
+        if(!$this->cn->query($sql)){
+            $flag = 0;
+            print 'Error resetNumCredito: '.$this->cn->query($sql);
+        }else{
+            $flag = 1;
+        }
+        return $flag;
+    }
+
+    public function addCredito($obj){
+        //$num_credito = $this->findNumberMaxCredito();
+        
+        $this->cn = (new Conecta)->getInstance();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }        
         //var_dump($obj);
         $flag = 0;
         settype($obj->idpersona, "Integer");
@@ -157,8 +252,9 @@ class CreditoDao {
         $fecha_ini = date('Y-m-d');
         $fecha_fin = date('Y-m-d', time() + (1 * 24 * 60 * 60));
         $hora = date("H:i:s");
-
-        $sql = "insert into cred_iprosap(idpersona, idsucursal, cred_num, fecha_ini, fecha_fin, hora, estado, iduser) values($obj->idpersona,$idsucursal,'00$idsucursal-$serie','$fecha_ini','$fecha_fin', '$hora', 1, $iduser)";
+        $serie = $this->CreateNumSerie();
+        
+        $sql = "insert into cred_iprosap(idpersona, idsucursal, cred_num, fecha_ini, fecha_fin, hora, estado, iduser) values($obj->idpersona,$idsucursal,'$serie','$fecha_ini','$fecha_fin', '$hora', 2, $iduser)";
         //echo $sql;
         if(!$this->cn->query($sql)){
             $flag = 0;
@@ -172,14 +268,14 @@ class CreditoDao {
                 $flag = 0;
                 print 'Error addCreditoDetalle: '.$this->cn->query($sql);
             }else{
-                $sql = "update sucursal SET num_credito=($num_credito) where idsucursal=$idsucursal";
+                /*$sql = "update sucursal SET num_credito=($num_credito) where idsucursal=$idsucursal";
                 //echo $sql;
                 if(!$this->cn->query($sql)){
                     $flag = 0;
                     print 'Error UpdateNumCredito: '.$this->cn->query($sql);
-                }else{
+                }else{*/
                     $flag = 1;
-                }
+                //}
             }
         }
 
@@ -191,7 +287,7 @@ class CreditoDao {
         $this->cn = (new Conecta)->getInstance();
         settype($obj->idpersona, "Integer");
 
-        $sql = "select * from creditos_deudas where idpersona = $obj->idpersona";
+        $sql = "select * from creditos_deudas where estado_ipro != 2 and idpersona = $obj->idpersona";
         //echo $sql;
         $result = $this->cn->query($sql) or die("Error findCreditosDeudas: ");
         $this->cn->close();
@@ -251,11 +347,45 @@ class CreditoDao {
         $fecha_fin = $obj->obj->fechaFin;
         $idsucursal = $_SESSION["idsucursal"];
 
-        $sql = "select * from vw_creditos where idsucursal = $idsucursal and fecha_ini between '$fecha_ini' and '$fecha_fin' order by cred_num desc";
+        $sql = "select * from vw_creditos where idsucursal = $idsucursal and estado_cred != 2 and fecha_ini between '$fecha_ini' and '$fecha_fin' order by cred_num desc";
         //echo $sql;
         $result = $this->cn->query($sql) or die("Error lstCreditoCrifo: ");
         $this->cn->close();
         return $result;
+    }
+    
+    public function lstCreditosSinDespachar(){
+        $this->cn = (new Conecta)->getInstance();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        /*settype($obj->obj->fechaIni, "string");
+        $fecha_ini = $obj->obj->fechaIni;
+        settype($obj->obj->fechaFin, "string");
+        $fecha_fin = $obj->obj->fechaFin;*/
+        $idsucursal = $_SESSION["idsucursal"];
+
+        $sql = "select * from vw_creditos where idsucursal = $idsucursal and estado_cred = 2 order by cred_num desc";
+        //echo $sql;
+        $result = $this->cn->query($sql) or die("Error lstCreditosSinDespachar: ");
+        $this->cn->close();
+        return $result;
+    }
+    
+    public function updtCreditoSinDespachar($obj){
+        $this->cn = (new Conecta)->getInstance();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $sql = "UPDATE cred_iprosap SET estado=1 WHERE idcred_iprosap =$obj->obj";
+        //echo $sql;
+        if(!$this->cn->query($sql)){
+            $flag = 0;
+            print 'Error updtCorrelativo: '.$this->cn->query($sql);
+        }else{
+            $flag = 1;
+        }
+        return $flag;
     }
 
 }

@@ -60,6 +60,7 @@ var e12_body = "No existe el cliente!. Necesita ser registrado, por el Administr
 var e13_body = "Tiene deuda, primero debe cancelar.";
 var e14_body = "Error al pagar la deuda, comunicar esto al ¡Administrador!.";
 var e15_body = "Se ha excedido el monto máximo en crédito para esta persona. El monto debe ser menor o igual al *Monto máximo de credito aprovado*.";
+var e16_body = "Ocurrio un error al despachar!";
 
 //Mensajes de Exito
 //para formularios y CRUD
@@ -71,6 +72,7 @@ var ok4_body = "Se cambio su clave Correctamente.";
 //para creditos
 var ok5_body = "El credito fue registrado correctamente.";
 var ok6_body = "Se pagó correctamente.";
+var ok7_body = "El credito fue despachado correctamente.";
 
 //funciones para los mensajes
 var msjErrorA = function(head, body){
