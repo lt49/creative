@@ -1,5 +1,5 @@
 //var app = angular.module("app-iprosap", ['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'mwl.calendar', 'colorpicker.module', "ui.router"]);
-var app = angular.module("app-iprosap", ["ui.router", 'ngAnimate', 'ngSanitize','ui.bootstrap', 'mwl.calendar', 'colorpicker.module','ui.toggle', 'ngMask', 'ngCookies']);
+var app = angular.module("app-iprosap", ["ui.router", 'ngAnimate', 'ngSanitize','ui.bootstrap', 'mwl.calendar', 'colorpicker.module','ui.toggle', 'ngMask', 'ngCookies', 'ngclipboard']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     $locationProvider.html5Mode(true).hashPrefix("!");

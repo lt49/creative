@@ -65,6 +65,9 @@
 
   <script src="public/recursos/plugins/AngularBootstrapToggle/angular-bootstrap-toggle.min.js" type="application/javascript"></script>
   <script src="public/recursos/plugins/AngularMask/ngMask.js" type="application/javascript"></script>
+  <!--copy clipboard-->
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngclipboard/1.1.1/ngclipboard.min.js"></script>
 
 
   
