@@ -101,7 +101,7 @@ if(empty($_GET["url"]) || $_GET["url"]=="inicio"){
 </script>
 <div class="login-box">
   <div class="login-logo">
-    <a href="./inicio"><b>IPROSAP</b> - Tarapoto <i class="material-icons">android</i></a>
+    <a href="./inicio"><b>IPROSAP PRUEBAS</b> - Tarapoto <i class="material-icons">android</i></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
