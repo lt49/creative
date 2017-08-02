@@ -8,4 +8,4 @@ RewriteEngine On
     RewriteRule ^ - [L]
     
     # Si el recurso no existe, usa el index.html
-    RewriteRule ^(.*)$ /test/index.php?url=$1 [QSA,L]
+    RewriteRule ^(.*)$ /index.php?url=$1 [QSA,L]
