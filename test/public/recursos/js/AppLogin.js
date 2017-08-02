@@ -73,8 +73,8 @@ app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
             $log.log(res.data);
             //alert("Angular entro al Callback");
             if (res.data.msj == "valido") {
-                $log.log(res.data.msj);
-                alert("OK! Usuario Correcto");
+                //$log.log(res.data.msj);
+                //alert("OK! Usuario Correcto");
                // $cookies.put('UsuarioSess', $scope.makeSerie());
                 $scope.redireccionar(res.data.rol);
             } else {
