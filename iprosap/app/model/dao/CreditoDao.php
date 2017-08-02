@@ -169,7 +169,7 @@ class CreditoDao {
         );   
         
         $base = "";
-        $logMaximo = 2;
+        $logMaximo = 999999;
         if($num>=$logMaximo){
             try{
                 //update al correlativo (actual+1)
