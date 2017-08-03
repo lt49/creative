@@ -1,5 +1,5 @@
 var app = angular.module("appLogin", ['ngCookies', 'ngSanitize']);
-app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies) {
+app.controller("ctr-login", function ($scope, $http, $timeout, $log, $cookies, $filter) {
 
     //|||||||||||||||||| FORM LOGIN |||||||||||||||||||||||||||||||||||||||||||
 

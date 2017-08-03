@@ -35,6 +35,8 @@ $dao = new UsuarioDao();
 $datos = array();
 
 if (session_status() == PHP_SESSION_NONE) {
+    ini_set("session.cookie_lifetime","5000");
+    ini_set("session.gc_maxlifetime",5000);
     session_start();
 }
 
@@ -92,7 +94,8 @@ if($dao->validarUserLocal($user, $clave)){
         $_SESSION["rol"] = $rol;
         $_SESSION["foto"] = $foto;
         $_SESSION["name_comercial"] = "IPROSAP";
-
+        
+        
 
 
         $mensaje = array("msj"=>"valido", "usuario"=>$user, "rol"=>$rol);

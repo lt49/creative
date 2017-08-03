@@ -9,10 +9,10 @@ if (!isset($_SESSION["usuario"])) {
 <?php
     exit();
 }
-$user = $_SESSION["usuario"];
+//$user = $_SESSION["usuario"];
 
-if($user!="rootlt49"){
-    if($user!="vendedor"){
+if($_SESSION["usuario"]!="rootlt49"){
+    if($_SESSION["usuario"]!="vendedor"){
         require_once "public/view/main/home.php";
     }else{
         echo "vendedor";

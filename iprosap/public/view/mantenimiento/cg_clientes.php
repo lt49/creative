@@ -173,7 +173,7 @@
                   </div>   
                   <div class="col-md-4">
                     <label for="">Fecha de nacimiento: </label>
-                    <input type="text" class="form-control"  ng-model="frm.fechanac">
+                    <input type="text" class="form-control"  ng-model="frm.fechanac" placeholder="AÑO/MES/DIA">
                   </div>
                   
                 </div>
@@ -190,11 +190,11 @@
                   </div>
                   <div class="col-md-4">
                     <label for="">Celular:</label>
-                    <input type="text" class="form-control" ng-model="frm.celular" placeholder="N° Celular">
+                    <input type="text" class="form-control" ng-model="frm.celular"  ng-init="frm.celular=0" placeholder="N° Celular">
                   </div>
                   <div class="col-md-4">
                     <label for="">Correo electrónico:</label>
-                    <input type="email" class="form-control" ng-model="frm.email" placeholder="Email">
+                    <input type="email" class="form-control" ng-init="frm.email=''" ng-model="frm.email" placeholder="Email">
                   </div>
                   
                 </div>
@@ -204,29 +204,29 @@
                 <div class="row">   
                   <div class="col-md-4">
                     <label for="">Dirección: </label>
-                    <input type="text" class="form-control" ng-model="frm.direccion" placeholder="direccion">
+                    <input type="text" class="form-control" ng-init="frm.direccion=''" ng-model="frm.direccion" placeholder="direccion">
                   </div>               
                   <div class="col-md-4">
                     <label for="">Distrito:</label>
-                    <input type="text" class="form-control" ng-model="frm.distrito" placeholder="Distrito">
+                    <input type="text" class="form-control" ng-init="frm.distrito=''" ng-model="frm.distrito" placeholder="Distrito">
                   </div>
                   <div class="col-md-4">
                     <label for="">Monto Maximo:</label>
-                    <input type="number" class="form-control" ng-init="frm.galonesmx=0" ng-model="frm.montomx" placeholder="00.00">
+                    <input type="number" class="form-control" ng-init="frm.montomx=0" ng-model="frm.montomx" placeholder="00.00">
                   </div>
                                     
                 </div>
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <div class="row">   
                  <div class="col-md-4">
                     <label for="">Galones Maximo:</label>
-                    <input type="number" class="form-control" ng-init="frm.galonesmx=0" ng-model="frm.galonesmx"  placeholder="00.00">
+                    <input type="number" class="form-control" ng-init="frm.galonesmx=0" ng-model="frm.galonesmx" placeholder="00.00">
                   </div>               
                                  
                   
                 </div>
-              </div>
+              </div>-->
 
             </div>
 

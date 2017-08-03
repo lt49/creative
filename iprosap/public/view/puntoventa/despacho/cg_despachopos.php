@@ -56,22 +56,19 @@ if (session_status() == PHP_SESSION_NONE) {
                             </thead>
                             <tbody>
                               <tr ng-repeat="des in dataDespacho">
-                                <td style="font-size: 14px;">{{$index+1}}</td>
-                                <td style="font-size: 14px;">{{des.apellidopat+" "+des.apellidomat+" "+des.nombres}}</td>
-                                <td style="font-size: 14px;">{{des.dni+" / "+des.placa}}</td>
-                                <td style="font-size: 14px;">
-                                    <span id="num_serie" class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span> 
-                                    <button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie">
-                                        <i class="fa fa-clipboard"></i>
-                                    </button> 
+                                <td>{{$index+1}}</td>
+                                <td>{{des.apellidopat+" "+des.apellidomat+" "+des.nombres}}</td>
+                                <td>{{des.dni+" / "+des.placa}}</td>
+                                <td>
+                                    <span class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>  
                                 </td>
-                                <td style="font-size: 14px;">
+                                <td>
                                     <span class="label bg-{{des.color}}" style="padding-right: 15px;padding-left: 15px;">{{des.producto}}</span>
                                 </td>
-                                <td style="font-size: 15px;">{{des.total | currency:"S/ ":2}}</td>
+                                <td>{{des.total | currency:"S/ ":2}}</td>
                                 <?php if($_SESSION["rol"]!= "CREDITO"){?>
                                 <td>
-                                  <button class="btn btn-default btn-sm" style="font-size: 15px;" ng-click="despacharProducto(des.idcred_iprosap)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
+                                  <button class="btn btn-default btn-xs" style="font-size: 15px;" ng-click="despacharProducto(des.idcred_iprosap)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
                                   </button>                                  
                                 </td>
                                 <?php } ?>
