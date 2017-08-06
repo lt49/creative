@@ -28,12 +28,32 @@ class CreditoDao {
         settype($obj->doc, "string");
         $fecha_hoy = date('Y-m-d');
         $documento = strlen($obj->doc)<8 ? "placa = '$obj->doc'" : "dni = '$obj->doc'";
-        $sql = "SELECT * FROM vw_creditos where ".$documento." and fecha_fin <= '$fecha_hoy'";
+        $sql = "SELECT * FROM vw_creditos where estado_cred = 1 and ".$documento." and fecha_fin <= '$fecha_hoy'";
         //$sql = "SELECT * FROM vw_credito_grifo where ".$documento." and fecha_cred_fin <= '$fecha_hoy' and estado_prorroga = 0";
         //echo $sql;
         $result = $this->cn->query($sql) or die("Error findClienteCredito: ");
         $this->cn->close();
         return $result;
+    }
+    
+    public function findCredSinDespachar($obj){
+        $this->cn = (new Conecta)->getInstance();
+
+        settype($obj->doc, "string");
+        $fecha_hoy = date('Y-m-d');
+        $documento = strlen($obj->doc)<8 ? "placa = '$obj->doc'" : "dni = '$obj->doc'";
+        $sql = "SELECT * FROM vw_creditos where estado_cred = 2 and ".$documento." and fecha_fin <= '$fecha_hoy'";
+        //$sql = "SELECT * FROM vw_credito_grifo where ".$documento." and fecha_cred_fin <= '$fecha_hoy' and estado_prorroga = 0";
+        //echo $sql;
+        $result = $this->cn->query($sql) or die("Error findClienteCredito: ");
+        $this->cn->close();
+        
+        $data = array();
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+        
+        return sizeof($data)==0?false:true;
     }
 
     /*public function findClienteCredito($obj){

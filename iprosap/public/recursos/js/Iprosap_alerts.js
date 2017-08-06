@@ -133,3 +133,14 @@ var msjConfirm = function(ahead, abody, cbtn, bhead, bbody, func){
 
       });
 }
+
+//INFO
+var msjInfoConfirm = function(head, body, tiempo){
+    swal({
+        title: head,
+        text: body,
+        type: "info",
+        timer: tiempo,
+        showConfirmButton: true
+     });
+};

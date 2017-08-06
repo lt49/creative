@@ -98,10 +98,10 @@ app.factory("ajax", function($http, $q, $log, $state){
                                 break;
                         }
                     }else{
-                        msjNOConfirm(e1_head, e14_body+" MENSAJE: "+response.data, 10000);
+                        msjNOConfirm(e1_head, e14_body+". No hay nada que Pagar.", 10000);
                     }
                   }, function errorCallback(response) {
-                    alert("Algo anda mal");
+                    alert("Algo anda mal: "+response.data);
                   });
                 break;
             case "pagarDiario":     //(op, url, documento, idpersona, fecha, importe, precio, idproducto, idcredito, clave, obj)
@@ -170,6 +170,29 @@ app.factory("ajax", function($http, $q, $log, $state){
     }
 
     //°°°°°°°°°°°°°°°°°° CREDITOS °°°°°°°°°°°°°°°°°°°°°°°°°°°
+    //BUSCA SI TIENE CREDITO SIN DESPACHAR
+    ajax.Verf_CreditoSinDespachar = function(op){
+            ajax.objlist.getList(op, ajax.urlfind, ajax.document, "", "", "", "", "", "", "","")
+            .then(function(data){
+                /*$log.log("ajax deuda credito");
+                $log.log(data.data);
+                $log.log(ajax.document);*/
+                if(data.data.estado){
+                    msjInfoConfirm("Ya se otorgo crédito a esta persona!", "El cliente ya tiene un Crédito otorgado, sin Despachar. Debe ir a Playa a ser atendido.", 10000);
+                    //alert("Tiene un Crédito otorgado sin Despachar. Debe ir a Playa a ser atendido.");
+                }else{
+                    ajax.estadoCGDeuda = false;
+                    //alert("No hay deuda de Credito");
+                    //busqueda del pago diario del cliente
+                    ajax.Verf_creditoDadoHoy();
+                }
+
+            })
+            .catch(function(error){
+                    alert(error);
+            });
+        }
+    
     //BUSCA DEUDA DE CREDITOS
     ajax.Verf_deudaCreditoGrifo = function(op){
             ajax.objlist.getList(op, ajax.urlfind, ajax.document, "", "", "", "", "", "", "","")
@@ -181,10 +204,8 @@ app.factory("ajax", function($http, $q, $log, $state){
                     ajax.estadoCGDeuda = true;
                     $state.go("credito-grifo.deuda");
                 }else{
-                    ajax.estadoCGDeuda = false;
-                    //alert("No hay deuda de Credito");
-                    //busqueda del pago diario del cliente
-                    ajax.Verf_creditoDadoHoy();
+                    //verificando si existe credito sin despachar
+                    ajax.Verf_CreditoSinDespachar("findCredSinDespachar");
                 }
 
             })
