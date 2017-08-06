@@ -23,18 +23,18 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="box box-success marco">
         <div class="box-header">
           <i class="fa fa-user"></i>
-          <h3 class="box-title">Despacho de Crédito IPROSAP</h3>          
+          <h3 class="box-title">Despacho de Crédito IPROSAP</h3>
         </div>
         <div class="box-body pad table-responsive">
           <div class="container-fluid">
               <div class="col-lg-10 col-lg-offset-1 col-sm-12">
-                <div class="panel panel-default">                  
-                  <div class="panel-body">                    
+                <div class="panel panel-default">
+                  <div class="panel-body">
                     <div class="row">
                          <div class="col-sm-2 col-sm-offset-5">
                               <button class="btn btn-info btn-sm" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i>
                                   Actualizar
-                              </button>                              
+                              </button>
                          </div>
                      </div>
                     <div class="row">
@@ -56,20 +56,23 @@ if (session_status() == PHP_SESSION_NONE) {
                             </thead>
                             <tbody>
                               <tr ng-repeat="des in dataDespacho">
-                                <td>{{$index+1}}</td>
-                                <td>{{des.apellidopat+" "+des.apellidomat+" "+des.nombres}}</td>
-                                <td>{{des.dni+" / "+des.placa}}</td>
-                                <td>
-                                    <span class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>  
+                                <td style="font-size: 14px;">{{$index+1}}</td>
+                                <td style="font-size: 14px;">{{des.apellidopat+" "+des.apellidomat+" "+des.nombres}}</td>
+                                <td style="font-size: 14px;">{{des.dni+" / "+des.placa}}</td>
+                                <td style="font-size: 14px;">
+                                    <span id="num_serie" class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>
+                                    <button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie">
+                                        <i class="fa fa-clipboard"></i>
+                                    </button>
                                 </td>
-                                <td>
+                                <td style="font-size: 14px;">
                                     <span class="label bg-{{des.color}}" style="padding-right: 15px;padding-left: 15px;">{{des.producto}}</span>
                                 </td>
-                                <td>{{des.total | currency:"S/ ":2}}</td>
+                                <td style="font-size: 15px;">{{des.total | currency:"S/ ":2}}</td>
                                 <?php if($_SESSION["rol"]!= "CREDITO"){?>
                                 <td>
-                                  <button class="btn btn-default btn-xs" style="font-size: 15px;" ng-click="despacharProducto(des.idcred_iprosap)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
-                                  </button>                                  
+                                  <button class="btn btn-default btn-sm" style="font-size: 15px;" ng-click="despacharProducto(des.idcred_iprosap)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
+                                  </button>
                                 </td>
                                 <?php } ?>
                               </tr>
@@ -78,7 +81,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>
                       </div>
                     </div>
-                    
+
 
                   </div>
                 </div>
