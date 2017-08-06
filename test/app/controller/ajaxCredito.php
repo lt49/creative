@@ -73,6 +73,11 @@ switch($operation){
         $result = $dao->findCreditosDeudas($obj);
         $datos = iterar_all($result);
         break;
+    case "findCredSinDespachar":
+        $datos = null;
+        $dao = new CreditoDao();
+        $datos = array("estado"=>$dao->findCredSinDespachar($obj));
+        break;
 
     case "pagarCreditos":
         $objArray = json_decode($_REQUEST["id"]);
