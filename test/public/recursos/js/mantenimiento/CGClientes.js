@@ -72,7 +72,7 @@ app.controller("CGClientes", function($scope, $log, $filter, $timeout, $http, $q
     $scope.frm.direccion = $filter('uppercase')(val);       
   }, true);
   $scope.$watch('frm.distrito', function(val) {
-    $scope.frm.nombres = $filter('uppercase')(val);       
+    $scope.frm.distrito = $filter('uppercase')(val);       
   }, true);
     
     
