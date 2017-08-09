@@ -9,9 +9,20 @@ app.controller("CGVender", function($scope, $log, $filter, $timeout, $http, $q, 
         $scope.precio = ajax.DataCliente[0].precio;
         //$log.log("IDPERSONA AJAX: "+ajax.DataCliente[0].idpersona);
 
-
+        $scope.count = 0;
         $scope.addCredito = function() {
-            ajax.objlist.getList("addCredito",$scope.urlfind,"", $scope.idpersona, "", $scope.monto, $scope.precio, $scope.idproducto)
+            $scope.count++;
+            //$log.log("****Contador | "+$scope.count);
+            if($scope.count == 1){
+                //$timeout(function(){
+                $scope.ajax()
+                //},1000); 
+            }
+        }
+
+        $scope.ajax = function(){
+                alert("OK");
+                ajax.objlist.getList("addCredito",$scope.urlfind,"", $scope.idpersona, "", $scope.monto, $scope.precio, $scope.idproducto)
                 .then(function(data){
                 //alert("intentando agregar!");
                     //$log.log("ajax Agregando Credito -->>>>");
@@ -37,9 +48,8 @@ app.controller("CGVender", function($scope, $log, $filter, $timeout, $http, $q, 
                 .catch(function(error){
                         alert(error);
                 });
-
-        }
-
+                
+            }
 
         if(!ajax.estadoCredito){
 

@@ -46,8 +46,12 @@ app.controller("CGDeudaPagar", function($scope, $log, $filter, $timeout, $http, 
         $scope.findCreditosDeudas();
 
         //Se encarga de pagar los creditos
+        $scope.count = 0;
         $scope.pagarCreditos = function(){
-            ajax.frmlogin("pagarCreditos", 0,"findpagar");
+            $scope.count++;
+            if($scope.count ==1){
+                ajax.frmlogin("pagarCreditos", 0,"findpagar");               
+            }
         }
 
         

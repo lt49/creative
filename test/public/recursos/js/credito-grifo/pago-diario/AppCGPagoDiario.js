@@ -9,10 +9,12 @@ app.controller("CGPagoDiario", function($scope, $log, $filter, $timeout, $http, 
 
         //$scope.getDatePE();
             $scope.idpersona = ajax.DataCliente[0].idpersona;
-
+            $scope.count = 0;
             $scope.pagarDiario = function(){
-
-                ajax.frmlogin("pagarDiario", $scope.idpersona);
+                $scope.count++;
+                if($scope.count==1){
+                    ajax.frmlogin("pagarDiario", $scope.idpersona);                    
+                }
 
 
                 //se otorga el credito
