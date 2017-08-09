@@ -18,15 +18,15 @@ app.controller("cg_despachopos", function($scope, $log, $filter, $timeout, $http
     
     //AJAX actualiza credito - lo despacha
     
-    $scope.despacharProducto = function(id){
+    $scope.despacharProducto = function(id, serie){
         ajax.objlist.getList("updtCreditoSinDespachar","app/controller/ajaxCredito.php","","", "", "", "", "", "", "", id)
         .then(function(res){
             
             if(res.data.estado==1){
                 $scope.listDespacho();
-                msjOk(ok1_head, ok7_body, 2000);
+                msjOk(ok1_head, ok7_body+" Se ha copiado el N° Serie: "+serie+"", 8000);
             }else{
-                msjError(e1_head, e16_body, 2000);
+                msjError(e1_head, e16_body, 6000);
             }
         })
         .catch(function(error){

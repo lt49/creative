@@ -21,7 +21,7 @@ app.controller("CGVender", function($scope, $log, $filter, $timeout, $http, $q, 
         }
 
         $scope.ajax = function(){
-                alert("OK");
+                //alert("OK");
                 ajax.objlist.getList("addCredito",$scope.urlfind,"", $scope.idpersona, "", $scope.monto, $scope.precio, $scope.idproducto)
                 .then(function(data){
                 //alert("intentando agregar!");
