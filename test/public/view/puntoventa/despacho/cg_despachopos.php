@@ -61,9 +61,9 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <td style="font-size: 14px;">{{des.dni+" / "+des.placa}}</td>
                                 <td style="font-size: 14px;">
                                     <span id="num_serie{{$index+1}}" class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>
-                                    <button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie{{$index+1}}">
+                                    <!--<button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie{{$index+1}}">
                                         <i class="fa fa-clipboard"></i>
-                                    </button>
+                                    </button>-->
                                 </td>
                                 <td style="font-size: 14px;">
                                     <span class="label bg-{{des.color}}" style="padding-right: 15px;padding-left: 15px;">{{des.producto}}</span>
@@ -71,7 +71,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <td style="font-size: 15px;">{{des.total | currency:"S/ ":2}}</td>
                                 <?php if($_SESSION["rol"]!= "CREDITO"){?>
                                 <td>
-                                  <button class="btn btn-default btn-sm" style="font-size: 15px;" ng-click="despacharProducto(des.idcred_iprosap)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
+                                  <button class="btn btn-default btn-sm" style="font-size: 15px;" ngclipboard data-clipboard-target="#num_serie{{$index+1}}" ng-click="despacharProducto(des.idcred_iprosap,des.cred_num)"><i class="fa fa-handshake-o" aria-hidden="true"></i> Despachar
                                   </button>
                                 </td>
                                 <?php } ?>
