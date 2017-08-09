@@ -60,8 +60,8 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <td style="font-size: 14px;">{{des.apellidopat+" "+des.apellidomat+" "+des.nombres}}</td>
                                 <td style="font-size: 14px;">{{des.dni+" / "+des.placa}}</td>
                                 <td style="font-size: 14px;">
-                                    <span id="num_serie" class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>
-                                    <button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie">
+                                    <span id="num_serie{{$index+1}}" class="label label-default" style="font-size: 14px;">{{des.cred_num}}</span>
+                                    <button class="btn btn-default" ngclipboard data-clipboard-target="#num_serie{{$index+1}}">
                                         <i class="fa fa-clipboard"></i>
                                     </button>
                                 </td>
